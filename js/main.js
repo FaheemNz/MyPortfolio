@@ -201,6 +201,7 @@
                     clearTimeout(debounceTimer);
                 }
                 var scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+
                 debounceTimer = setTimeout(function () {
                     if (scrollPos > 800) {
                         btn.classList.add('is-active');
@@ -211,9 +212,6 @@
                         bn.classList.remove('bottom-navv');
                         bni.classList.add('hide')
                     }
-
-                    console.log('fired');
-
                 }, 100);
             }
         })();
@@ -275,9 +273,10 @@
             });
 
 
-            var elements = $('.typewrite', true);
+            var elements = $('.typewrite', true),
+                maxElements = elements.length;
 
-            for (var i = 0; i < elements.length; i++) {
+            for (var i = 0; i < maxElements; i++) {
                 var toRotate = elements[i].getAttribute('data-type');
                 var period = elements[i].getAttribute('data-period');
                 if (toRotate) {
@@ -286,10 +285,11 @@
             }
 
             var triggers = $('.js-trigger', true),
-                move2 = new MoveTo();
+                move2 = new MoveTo(),
+                maxTriggers = triggers.length;
 
 
-            for (var i = 0; i < triggers.length; i++) {
+            for (var i = 0; i < maxTriggers; i++) {
                 move2.registerTrigger(triggers[i]);
             }
 
@@ -302,7 +302,6 @@
                 var bn = $('#bottom-nav-1');
                 bn.parentElement.removeChild(bn);
             } else {
-                $('#skills-list').classList.remove('list--two-line');
                 // Remove Toolbar Nav
                 var tn = $('#toolbar-sec-1');
                 tn.parentElement.removeChild(tn);
